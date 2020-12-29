@@ -11,8 +11,9 @@ private:
 	int map_x, map_y;
 
 	/*default and custom map coordinate for rover*/
-	int map_default[2][2] = { {0, 1}, {1, 1} };
-	vector<vector<int>> map_custom;
+	/*TODO: change default map to char so is more consistent*/
+	int map_default[2][2] = { {0, 0}, {0, 0} };
+	vector<vector<char>> map_custom;
 	
 public:
 	Map() : map_x{2}, map_y{2}
@@ -32,20 +33,14 @@ public:
 	{
 		for (int i = 0; i < map_x; i++)
 		{
-			vector<int>v1;
+			vector<char>v1;
 
 			for (int j = 0; j < map_y; j++)
 			{
-				v1.push_back(0);
+				v1.push_back('0');
 			}
 
 			map_custom.push_back(v1);
-		}
-
-		for (int i = 0; i < map_custom.size(); i++) {
-			for (int j = 0; j < map_custom[i].size(); j++)
-				cout << map_custom[i][j] << " ";
-			cout << endl;
 		}
 	}
 
@@ -58,8 +53,8 @@ public:
 		}
 	}
 
-	void Set(int *rover_position)
+	void Set(int *rover_position, char rover_rotation)
 	{
-		map_custom[rover_position[0]][rover_position[1]] = 1;
+		map_custom[rover_position[0]][rover_position[1]] = rover_rotation;
 	}
 };

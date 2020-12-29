@@ -1,6 +1,4 @@
 ﻿  main.cpp
-C:\Users\carlo\OneDrive\Documents\C++\Mars Rovers\Mars Rovers\Map.h(45,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\carlo\OneDrive\Documents\C++\Mars Rovers\Mars Rovers\Map.h(46,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\carlo\OneDrive\Documents\C++\Mars Rovers\Mars Rovers\Map.h(54,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\carlo\OneDrive\Documents\C++\Mars Rovers\Mars Rovers\Map.h(55,22): warning C4018: '<': signed/unsigned mismatch
-  Mars Rovers.vcxproj -> C:\Users\carlo\OneDrive\Documents\C++\Mars Rovers\Debug\Mars Rovers.exe
+C:\Users\carlo\OneDrive\Documents\C++\Mars Rover C++ challenge\Mars Rovers\Mars Rovers\Map.h(49,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\carlo\OneDrive\Documents\C++\Mars Rover C++ challenge\Mars Rovers\Mars Rovers\Map.h(50,22): warning C4018: '<': signed/unsigned mismatch
+  Mars Rovers.vcxproj -> C:\Users\carlo\OneDrive\Documents\C++\Mars Rover C++ challenge\Mars Rovers\Debug\Mars Rovers.exe

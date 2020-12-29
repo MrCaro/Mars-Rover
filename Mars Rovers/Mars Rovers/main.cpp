@@ -6,18 +6,21 @@ using namespace std;
 
 int main()
 {
-	cout << "Creating map 5x5" << endl;
+	/*creating map with number of coordinates desired*/
 	Map map(5, 5);
-
-	cout << endl;
-
-	cout << "Accessing map" << endl;
+	cout << "Init empty map" << endl;
 	map.Get();
 	
 	cout << endl;
 
-	Rover rover(1, 2, 'N');
-	map.Set(rover.SetPosition());
+	/*placing rover in starting point*/
+	Rover rover(1, 2, 'E');
+	map.Set(rover.SetPosition(), rover.SetRotation());
+	map.Get();
 
+	/*updating position of rover*/
+	char array[] = { 'L' };
+	rover.UpdatePosition(array);
+	map.Set(rover.SetPosition(), rover.SetRotation());
 	map.Get();
 }
