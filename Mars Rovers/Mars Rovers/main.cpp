@@ -8,19 +8,16 @@ int main()
 {
 	/*creating map with number of coordinates desired*/
 	Map map(5, 5);
-	cout << "Init empty map" << endl;
-	map.Get();
+	cout << "Initializing map" << endl;
 	
-	cout << endl;
-
 	/*placing rover in starting point*/
-	Rover rover(1, 2, 'E');
-	map.Set(rover.SetPosition(), rover.SetRotation());
+	Rover rover(1, 2, 'N');
+	map.Set(rover.GetPosition(), rover.GetRotation());
 	map.Get();
 
 	/*updating position of rover*/
-	char array[] = { 'L' };
-	rover.UpdatePosition(array);
-	map.Set(rover.SetPosition(), rover.SetRotation());
+	string instructions = "LMLMLMLMM";
+	rover.UpdatePosition(instructions);
+	map.Set(rover.GetPosition(), rover.GetRotation());
 	map.Get();
 }

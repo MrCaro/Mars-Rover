@@ -7,7 +7,7 @@ class Rover
 private:
 	/*position of rover in coordinates of map*/
 	int rover_x, rover_y;
-	int position[2] = { rover_x, rover_y };
+	int rover_position[2] = { rover_x, rover_y };
 
 	/*facing direction of rover*/
 	char rover_rotation;
@@ -16,35 +16,41 @@ private:
 public:
 	Rover(int x, int y, char r) : rover_x{x}, rover_y{y}, rover_rotation{r}
 	{
-		/*cout << "Rover x-axis position: " << rover_x << endl;
-		cout << "Rover y-axis position: " << rover_y << endl;
-		cout << "Rover facing: " << rover_rotation << endl;*/
+		//init my rover object
 	}
 
-	int *SetPosition()
+	int *GetPosition()
 	{
-		return position;
+		return rover_position;
 	}
 
-	void UpdatePosition(char instructions[])
-	{
-		if (instructions[0] == 'M')
-		{
-			cout << "Moving rover" << endl;
-		}
-
-		else
-		{
-			UpdateRotation(instructions[0]);
-		}
-	}
-
-	char SetRotation()
+	char GetRotation()
 	{
 		return rover_rotation;
 	}
 
-	char UpdateRotation(char rotation)
+	void UpdatePosition(string instructions)
+	{
+		for (int i = 0; i < instructions.size() ; i++)
+		{
+			if (instructions[i] == 'M')
+			{
+				cout << "Moving rover" << endl;
+			}
+
+			else
+			{
+				RotateRover(instructions[i]);
+			}
+		}
+	}
+
+	int MoveRover()
+	{
+		return 0;
+	}
+
+	char RotateRover(char rotation)
 	{
 		int rotate_rover = (rotation == 'L') ? -1 : 1;
 
@@ -53,12 +59,16 @@ public:
 			if (rover_rotation == rover_rotationOptions[i])
 			{
 				i += (rotate_rover);
+				//handling whenever turn is negative (N -> W) and greater than array size whenever (W -> N)
+				i = (i < 0) ? (sizeof(rover_rotationOptions) - 1) : i;
+				i = (i == sizeof(rover_rotationOptions)) ? 0 : i;
+
 				rover_rotation = rover_rotationOptions[i];
-				cout << "Rover is facing: " << rover_rotation << endl;
+				/*cout << "Rover is now facing: " << rover_rotation << endl;*/
 				break;
 			}
 		}
-
+		
 		return rover_rotation;
 	}
 };

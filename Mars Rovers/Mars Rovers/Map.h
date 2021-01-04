@@ -7,12 +7,11 @@ using namespace std;
 class Map 
 {
 private: 
-	/*coordinates*/
+	//map coordinates
 	int map_x, map_y;
 
-	/*default and custom map coordinate for rover*/
-	/*TODO: change default map to char so is more consistent*/
-	int map_default[2][2] = { {0, 0}, {0, 0} };
+	//default and custom maps coordinate for rover
+	int map_default[2][2] = { {0, 0}, {0, 0} }; //TODO: change default map to char so is more consistent
 	vector<vector<char>> map_custom;
 	
 public:
