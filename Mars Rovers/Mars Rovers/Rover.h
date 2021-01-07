@@ -13,9 +13,6 @@ private:
 	char rover_rotation;
 	char rover_rotationOptions[4] = { 'N', 'E', 'S', 'W' };
 
-	//handles rover movement over x and y axis
-	int rover_movement = 0;
-
 public:
 	Rover(int x, int y, char r) : rover_x{x}, rover_y{y}, rover_rotation{r}
 	{
@@ -24,6 +21,7 @@ public:
 
 	int *GetPosition()
 	{
+		cout << "(" << rover_position[0] << ", " << rover_position[1] << ")" << endl;
 		return rover_position;
 	}
 
@@ -32,7 +30,7 @@ public:
 		return rover_rotation;
 	}
 
-	void UpdatePosition(string instructions)
+	void SetPosition(string instructions)
 	{
 		for (int i = 0; i < instructions.size() ; i++)
 		{
@@ -40,20 +38,18 @@ public:
 			{
 				if (rover_rotation == 'W' || rover_rotation == 'E')
 				{
-					rover_movement = (rover_rotation == 'W') ? -1 : 1;
-					rover_x += rover_movement;
+					rover_x += (rover_rotation == 'W') ? -1 : 1;
 				}
 
 				else
 				{
-					rover_movement = (rover_rotation == 'S') ? -1 : 1;
-					rover_y += rover_movement;
+					rover_y += (rover_rotation == 'S') ? -1 : 1;
 				}
 			}
 
 			else
 			{
-				RotateRover(instructions[i]);
+				SetRotation(instructions[i]);
 			}
 		}
 
@@ -61,7 +57,7 @@ public:
 		rover_position[1] = rover_y;
 	} 
 
-	char RotateRover(char rotation)
+	char SetRotation(char rotation)
 	{
 		int rotate_rover = (rotation == 'L') ? -1 : 1;
 
@@ -75,7 +71,6 @@ public:
 				i = (i == sizeof(rover_rotationOptions)) ? 0 : i;
 
 				rover_rotation = rover_rotationOptions[i];
-				/*cout << "Rover is now facing: " << rover_rotation << endl;*/
 				break;
 			}
 		}

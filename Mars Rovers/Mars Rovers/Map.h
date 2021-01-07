@@ -54,6 +54,8 @@ public:
 
 	void Set(int *rover_position, char rover_rotation)
 	{
-		map_custom[rover_position[0]][rover_position[1]] = rover_rotation;
+		map_custom[rover_position[0]-1][rover_position[1]-1] = rover_rotation;
+		Map::Get();
+		map_custom[rover_position[0]-1][rover_position[1]-1] = '0';
 	}
 };
