@@ -15,9 +15,12 @@ int main()
 	map.Set(rover.GetPosition(), rover.GetRotation());
 	map.Get();
 
+	cout << endl;
+
 	/*updating position of rover*/
 	string instructions = "LMLMLMLMM";
 	rover.UpdatePosition(instructions);
 	map.Set(rover.GetPosition(), rover.GetRotation());
+	rover.GetPosition();
 	map.Get();
 }

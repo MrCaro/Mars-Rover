@@ -5,13 +5,16 @@
 class Rover
 {
 private:
-	/*position of rover in coordinates of map*/
+	//position of rover in coordinates of map
 	int rover_x, rover_y;
 	int rover_position[2] = { rover_x, rover_y };
 
-	/*facing direction of rover*/
+	//facing direction of rover
 	char rover_rotation;
 	char rover_rotationOptions[4] = { 'N', 'E', 'S', 'W' };
+
+	//handles rover movement over x and y axis
+	int rover_movement = 0;
 
 public:
 	Rover(int x, int y, char r) : rover_x{x}, rover_y{y}, rover_rotation{r}
@@ -35,7 +38,17 @@ public:
 		{
 			if (instructions[i] == 'M')
 			{
-				cout << "Moving rover" << endl;
+				if (rover_rotation == 'W' || rover_rotation == 'E')
+				{
+					rover_movement = (rover_rotation == 'W') ? -1 : 1;
+					rover_x += rover_movement;
+				}
+
+				else
+				{
+					rover_movement = (rover_rotation == 'S') ? -1 : 1;
+					rover_y += rover_movement;
+				}
 			}
 
 			else
@@ -43,12 +56,10 @@ public:
 				RotateRover(instructions[i]);
 			}
 		}
-	}
 
-	int MoveRover()
-	{
-		return 0;
-	}
+		rover_position[0] = rover_x;
+		rover_position[1] = rover_y;
+	} 
 
 	char RotateRover(char rotation)
 	{
